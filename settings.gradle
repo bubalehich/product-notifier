@@ -1,0 +1,2 @@
+rootProject.name = 'ProductNotifier'
+include 'email-notification-microservice', 'product-microservice', 'core'

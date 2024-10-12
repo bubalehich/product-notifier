@@ -1,0 +1,7 @@
+subprojects {
+    group = 'by.bubalehich'
+    version = '1.0-SNAPSHOT'
+    repositories {
+        mavenCentral()
+    }
+}
