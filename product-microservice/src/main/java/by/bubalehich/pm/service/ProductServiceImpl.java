@@ -3,8 +3,6 @@ package by.bubalehich.pm.service;
 
 import by.bubalehich.pm.dto.CreateProductDto;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
@@ -17,7 +15,7 @@ import by.bubalehich.core.ProductCreatedEvent;
 @Service
 @Slf4j
 public class ProductServiceImpl implements ProductService {
-    private KafkaTemplate<String, ProductCreatedEvent> kafkaTemplate;
+    private final KafkaTemplate<String, ProductCreatedEvent> kafkaTemplate;
 
     public ProductServiceImpl(KafkaTemplate<String, ProductCreatedEvent> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
@@ -35,9 +33,9 @@ public class ProductServiceImpl implements ProductService {
 //                .send("product-created-events-topic", productId, event);
 //        future.whenComplete((result, exception) -> {
 //            if ((exception != null)) {
-//                LOGGER.error("Failed to send message: {}", exception.getMessage());
+//                log.error("Failed to send message: {}", exception.getMessage());
 //            } else {
-//                LOGGER.info("Message send successfully: {}", result.getRecordMetadata());
+//                log.info("Message send successfully: {}", result.getRecordMetadata());
 //            }
 //        });
 
